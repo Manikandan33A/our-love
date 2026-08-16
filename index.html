@@ -1,117 +1,498 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#d63031">
-  <title>Our Love Story ❤️</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      min-height: 100vh;
-      min-height: 100dvh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      padding: 24px 16px;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-      color: #2d3436;
-    }
-    .container {
-      width: min(100%, 390px);
-      padding: 24px;
-      text-align: center;
-      background: #fff;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, .2);
-    }
-    h1 { margin: 0; font-size: clamp(1.35rem, 5vw, 1.65rem); color: #d63031; }
-    h2 { margin: 10px 0 0; font-size: 1.1rem; color: #2d3436; }
-    .slideshow { margin-top: 18px; }
-    .slideshow img {
-      display: block;
-      width: 100%;
-      height: clamp(220px, 65vw, 280px);
-      object-fit: cover;
-      border-radius: 10px;
-      background: #f1f2f6;
-    }
-    .memory { margin-top: 18px; }
-    .memory h3 { margin: 0 0 7px; color: #0984e3; font-size: 1rem; }
-    .memory p { margin: 0; color: #636e72; font-size: .95rem; line-height: 1.5; }
-    .page-indicator { margin-top: 10px; color: #8d969a; font-size: .8rem; font-weight: bold; }
-    button {
-      width: 100%;
-      margin-top: 18px;
-      padding: 12px 20px;
-      border: 2px solid #fdcb6e;
-      border-radius: 8px;
-      background: #ffeaa7;
-      color: #6c5ce7;
-      font: inherit;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color .2s, transform .2s;
-    }
-    button:hover, button:focus-visible { background: #fdcb6e; }
-    button:active { transform: scale(.98); }
-    button:focus-visible { outline: 3px solid #6c5ce7; outline-offset: 3px; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Love Story ❤️ - Manikandan & Varshini</title>
+    <!-- Google Fonts for romantic typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #ff4757;
+            --secondary-color: #ff6b81;
+            --bg-gradient: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fad0c4 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-gradient);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Colorful Floating Background Hearts */
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            animation: flyHeart 6s linear infinite;
+            bottom: -30px;
+            opacity: 0.8;
+        }
+
+        @keyframes flyHeart {
+            0% { transform: translateY(0) scale(0.5) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.9; }
+            100% { transform: translateY(-105vh) scale(1.3) rotate(360deg); opacity: 0; }
+        }
+
+        /* Main Container Card with Yellow Inner Glow */
+        .container {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 28px;
+            border-radius: 24px;
+            width: 380px;
+            max-width: 90vw;
+            text-align: center;
+            /* Outer card shadow + Inner Yellow Glow effect */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                        inset 0 0 20px rgba(255, 221, 89, 0.5),
+                        inset 0 0 10px rgba(255, 193, 7, 0.4);
+            border: 2px solid rgba(255, 235, 153, 0.9);
+            z-index: 2;
+            position: relative;
+            animation: popUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, yellowPulse 4s ease-in-out infinite alternate;
+        }
+
+        @keyframes yellowPulse {
+            0% {
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                            inset 0 0 15px rgba(255, 221, 89, 0.4),
+                            inset 0 0 8px rgba(255, 193, 7, 0.3);
+            }
+            100% {
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 
+                            inset 0 0 30px rgba(255, 215, 0, 0.7),
+                            inset 0 0 15px rgba(255, 183, 3, 0.5);
+            }
+        }
+
+        @keyframes popUp {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Top Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            background: #dfe6e9;
+            height: 6px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(95deg, #ff4757, #ff6b81);
+            width: 0%;
+            transition: width 0.4s ease;
+            border-radius: 3px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 22px;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        h2 {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        /* Attractive Animated Glowing Border for Image Frame */
+        .slideshow-wrapper {
+            padding: 4px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, #ff9a9e, #ff6b81, #ff4757, #fad0c4, #fecfef);
+            background-size: 300% 300%;
+            animation: borderAnimation 4s ease infinite;
+            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.3);
+        }
+
+        @keyframes borderAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .slideshow {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #fff;
+            aspect-ratio: 4 / 3;
+        }
+
+        .slideshow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, opacity 0.4s ease;
+        }
+
+        .slideshow img.fade {
+            animation: fadeInOut 0.4s ease;
+        }
+
+        @keyframes fadeInOut {
+            0% { opacity: 0; transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
+        /* Memory Text Details */
+        .memory {
+            margin-top: 16px;
+            min-height: 85px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .memory h3 {
+            color: #e84393;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+            font-weight: 700;
+        }
+
+        .memory b {
+            font-size: 15px;
+            color: var(--text-main);
+            line-height: 1.4;
+            font-weight: 650;
+        }
+
+        .page-indicator {
+            font-size: 11px;
+            color: #a4b0be;
+            margin-top: 10px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Action Buttons Wrapper */
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+        }
+
+        button {
+            flex: 1;
+            background: linear-gradient(135deg, #ff4757, #ff6b81);
+            color: white;
+            border: none;
+            padding: 12px 16px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 12px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(255, 71, 87, 0.35);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.5);
+            background: linear-gradient(135deg, #ff3344, #ff5268);
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        .btn-prev {
+            background: #f1f2f6;
+            color: var(--text-muted);
+            box-shadow: none;
+            flex: 0.4;
+        }
+
+        .btn-prev:hover {
+            background: #dfe4ea;
+            color: var(--text-main);
+        }
+    </style>
 </head>
 <body>
-  <main class="container">
-    <h1 id="main-title">❤️ Our Love Story ❤️</h1>
-    <h2>Manikandan ❤️ Varshini</h2>
-    <div class="slideshow">
-      <img id="memory-img" src="Aji1.jpg" alt="Welcome memory" decoding="async">
-    </div>
-    <section class="memory" aria-live="polite">
-      <h3 id="date">Welcome!</h3>
-      <p id="text">Love you dii azhagii 💞</p>
-      <div class="page-indicator" id="page-num">Welcome Page</div>
-    </section>
-    <button id="action-btn" type="button">Start Journey ❤️</button>
-  </main>
 
-  <script>
+    <!-- Colorful Floating Background Hearts -->
+    <div class="floating-hearts" id="heart-container"></div>
+
+<div class="container">
+
+    <!-- Progress Indicator Bar -->
+    <div class="progress-bar-container">
+        <div class="progress-bar" id="progress-bar"></div>
+    </div>
+
+    <h1 id="main-title">❤️ Our Love Story ❤️</h1>
+    <h2 id="sub-title">Manikandan ❤️ Varshini</h2>
+
+    <div class="slideshow-wrapper">
+        <div class="slideshow">
+            <img id="memory-img" src="image/Aji1.jpg" alt="Our Memory">
+        </div>
+    </div>
+
+    <div class="memory">
+        <h3 id="date">Welcome!</h3>
+        <b id="text">Love you dii azhagiii💞</b>
+        <div class="page-indicator" id="page-num">Welcome Page</div>
+    </div>
+
+    <div class="btn-group">
+        <button id="prev-btn" class="btn-prev" onclick="prevPage()" style="display:none;"><i class="fa-solid fa-arrow-left"></i></button>
+        <button id="action-btn" onclick="nextPage()">Start Journey <i class="fa-solid fa-heart"></i></button>
+    </div>
+
+</div>
+
+<script>
+    // Complete 16 pages data (Welcome + 15 Moments)
     const pages = [
-      ["❤️ Our Love Story ❤️", "Aji1.jpg", "Welcome!", "Love you dii azhagii 💞", "Start Journey ❤️", "Welcome Page"],
-      ["Lovable Moment 1", "Aji2.jpg", "1 May 2025", "Our first love chat. This day will always stay in my heart. ❤️", "Next Moment ❤️", "Moment 1 of 15"],
-      ["Lovable Moment 2", "Aji3.jpg", "8 May 2025", "Our love journey started here... ✨", "Next Moment ❤️", "Moment 2 of 15"],
-      ["Lovable Moment 3", "Aji4.jpg", "27 May 2025", "Our first video call 🌙", "Next Moment ❤️", "Moment 3 of 15"],
-      ["Lovable Moment 4", "Aji5.jpg", "31 May 2025", "I called her 'dii' — thookam varuthu dii 💖🥰", "Next Moment ❤️", "Moment 4 of 15"],
-      ["Lovable Moment 5", "Aji6.jpg", "6 June 2025", "She called me 'daa' — video call pannu daa 💖🥰", "Next Moment ❤️", "Moment 5 of 15"],
-      ["Lovable Moment 6", "Aji7.jpg", "16 June 2025", "Our first audio call — boring AI conversation ✨", "Next Moment ❤️", "Moment 6 of 15"],
-      ["Lovable Moment 7", "Aji8.jpg", "31 July 2025", "A small walk with her, dropping her at the bus ✨", "Next Moment ❤️", "Moment 7 of 15"],
-      ["Lovable Moment 8", "Aji9.jpg", "14 August 2025", "Iruvarum kaiyuru katti konda naal 💖😊", "Next Moment ❤️", "Moment 8 of 15"],
-      ["Lovable Moment 9", "Aji10.jpg", "2 September 2025", "Our first photo together — my dream with my sweet partner 💖😊", "Next Moment ❤️", "Moment 9 of 15"],
-      ["Lovable Moment 10", "Aji11.jpg", "18 September 2025", "First time sitting with her ✨💖🫣", "Next Moment ❤️", "Moment 10 of 15"],
-      ["Lovable Moment 11", "Aji12.jpg", "21 November 2025", "Marriage dream — woke up with beautiful thoughts ✨🥹💕", "Next Moment ❤️", "Moment 11 of 15"],
-      ["Lovable Moment 12", "Aji13.jpg", "24 November 2025", "Our department dream succeeded 💖💕😘", "Next Moment ❤️", "Moment 12 of 15"],
-      ["Lovable Moment 13", "Aji.jpg", "8 December 2025", "She gave me an unexpected birthday gift 🌹🥰", "Next Moment ❤️", "Moment 13 of 15"],
-      ["Lovable Moment 14", "Aji15.jpg", "7 April 2026", "Enakku onnu venum... aanaa selavu vena. Vaangi thariyaa? Earring eduthuttu vaa — the first time she asked emotionally ✨♥️💝", "Next Moment ❤️", "Moment 14 of 15"],
-      ["Lovable Moment 15", "Aji16.jpg", "Forever & Always", "Successfully completed our one-year anniversary 💍✨", "Restart Story 🔄", "Moment 15 of 15"]
+        {
+            title: "❤️ Our Love Story ❤️",
+            image: "image/Aji1.jpg",
+            date: "Welcome!",
+            text: "Love you dii azhagiii💞",
+            btnText: "Start Journey ❤️",
+            indicator: "Welcome Page"
+        },
+        {
+            title: "Lovable Moment 1",
+            image: "image/Aji2.jpg",
+            date: "1 May 2025",
+            text: "Our first love chat. This day will always stay in my heart. ❤️",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 1 of 15"
+        },
+        {
+            title: "Lovable Moment 2",
+            image: "image/Aji3.jpg",
+            date: "08 May 2025",
+            text: "Our Love journey started here.. ✨",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 2 of 15"
+        },
+        {
+            title: "Lovable Moment 3",
+            image: "image/Aji4.jpg",
+            date: "27 May 2025",
+            text: "Our first video call 🌙",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 3 of 15"
+        },
+        {
+            title: "Lovable Moment 4",
+            image: "image/Aji5.jpg",
+            date: "31 May 2025",
+            text: "I called her as dii😇 Thookam varuthu dii 💖🥰",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 4 of 15"
+        },
+        {
+            title: "Lovable Moment 5",
+            image: "image/Aji6.jpg",
+            date: "6 June 2025",
+            text: "She called me daa.. Video call pannu daa 💖🥰",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 5 of 15"
+        },
+        {
+            title: "Lovable Moment 6",
+            image: "image/Aji7.jpg",
+            date: "16 June 2025",
+            text: "Our first audio call (boring) AI conversation ✨",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 6 of 15"
+        },
+        {
+            title: "Lovable Moment 7",
+            image: "image/Aji8.jpg",
+            date: "31 July 2025",
+            text: "Small walk with her, drop to bus ✨",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 7 of 15"
+        },
+        {
+            title: "Lovable Moment 8",
+            image: "image/Aji9.jpg",
+            date: "14 August 2025",
+            text: "Iruvarum kayiru katti konda naal 💖😊",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 8 of 15"
+        },
+        {
+            title: "Lovable Moment 9",
+            image: "image/Aji10.jpg",
+            date: "2 September 2025",
+            text: "Iruvarum muthal murai photo edutha naal ✨ My dream with my shot partner 💖 😊",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 9 of 15"
+        },
+        {
+            title: "Lovable Moment 10",
+            image: "image/Aji11.jpg",
+            date: "18 September 2025",
+            text: "First time sitting with her ✨💖🫣",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 10 of 15"
+        },
+        {
+            title: "Lovable Moment 11",
+            image: "image/Aji12.jpg",
+            date: "21 November 2025",
+            text: "Marriage dream.. waked up got good thoughts ✨🥹💕",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 11 of 15"
+        },
+        {
+            title: "Lovable Moment 12",
+            image: "image/Aji13.jpg",
+            date: "24 November 2025",
+            text: "Department dream has success 💖💕😘",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 12 of 15"
+        },
+        {
+            title: "Lovable Moment 13",
+            image: "image/Aji14.jpg",
+            date: "8 December 2025",
+            text: "She gave me unexpected birthday gift 🌹🥰",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 13 of 15"
+        },
+        {
+            title: "Lovable Moment 14",
+            image: "image/Aji15.jpg",
+            date: "7 April 2026",
+            text: "Enakku onnu venum..ana selavu vena..vaangi thariya, earing eduthutu vaa (first time emotionally she wants) ✨♥️💝",
+            btnText: "Next Moment ❤️",
+            indicator: "Moment 14 of 15"
+        },
+        {
+            title: "Lovable Moment 15",
+            image: "image/Aji16.jpg",
+            date: "Forever & Always",
+            text: "Successfully completed one year anniversary 💍✨",
+            btnText: "Restart Story 🔄",
+            indicator: "Moment 15 of 15"
+        }
     ];
 
     let currentIndex = 0;
-    const [title, image, date, message, button, indicator] = ["main-title", "memory-img", "date", "text", "action-btn", "page-num"].map(id => document.getElementById(id));
 
-    function renderPage() {
-      const [pageTitle, imageSource, pageDate, pageText, buttonText, pageIndicator] = pages[currentIndex];
-      title.textContent = pageTitle;
-      image.src = imageSource;
-      image.alt = `${pageTitle}: ${pageDate}`;
-      date.textContent = pageDate;
-      message.textContent = pageText;
-      button.textContent = buttonText;
-      indicator.textContent = pageIndicator;
+    function updateContent() {
+        const imgElement = document.getElementById("memory-img");
+        
+        imgElement.classList.add("fade");
+        
+        setTimeout(() => {
+            document.getElementById("main-title").innerText = pages[currentIndex].title;
+            imgElement.src = pages[currentIndex].image;
+            document.getElementById("date").innerText = pages[currentIndex].date;
+            document.getElementById("text").innerText = pages[currentIndex].text;
+            document.getElementById("action-btn").innerHTML = pages[currentIndex].btnText + ' <i class="fa-solid fa-heart"></i>';
+            document.getElementById("page-num").innerText = pages[currentIndex].indicator;
+            
+            imgElement.classList.remove("fade");
+        }, 200);
+
+        let progressPercent = (currentIndex / (pages.length - 1)) * 100;
+        document.getElementById("progress-bar").style.width = progressPercent + "%";
+
+        const prevBtn = document.getElementById("prev-btn");
+        if (currentIndex > 0) {
+            prevBtn.style.display = "flex";
+        } else {
+            prevBtn.style.display = "none";
+        }
     }
 
-    button.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % pages.length;
-      renderPage();
-    });
-  </script>
+    function nextPage() {
+        currentIndex++;
+        if (currentIndex >= pages.length) {
+            currentIndex = 0; 
+        }
+        updateContent();
+    }
+
+    function prevPage() {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateContent();
+        }
+    }
+
+    // Generate colorful floating hearts dynamically in background
+    function createHeart() {
+        const heartContainer = document.getElementById("heart-container");
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = '<i class="fa-solid fa-heart"></i>';
+        
+        heart.style.left = Math.random() * 100 + "vw";
+        
+        const colors = ["#ff4757", "#ff6b81", "#ff9a9e", "#e84393", "#fd79a8", "#fab1a0", "#ff7675"];
+        heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+        
+        heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        heart.style.fontSize = (Math.random() * 14 + 12) + "px";
+        
+        heartContainer.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+    }
+
+    setInterval(createHeart, 300);
+</script>
+
 </body>
 </html>
